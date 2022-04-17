@@ -1,0 +1,30 @@
+{
+  "name": "shop_ecoomerce",
+  "version": "1.0.0",
+  "description": "ecommerce site using MERN",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "NODE_ENV=DEVELOPMENT nodemon backend/server",
+    "prod": "NODE_ENV=PRODUCTION nodemon backend/server",
+    "seeder": "node backend/utils/seeder.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sourav-roy-github/shop_ecoomerce.git"
+  },
+  "author": "sourav roy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sourav-roy-github/shop_ecoomerce/issues"
+  },
+  "homepage": "https://github.com/sourav-roy-github/shop_ecoomerce#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
