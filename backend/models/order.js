@@ -53,6 +53,49 @@ const orderSchema = mongoose.Schema({
       },
     },
   ],
+  paymentInfo: {
+    id: {
+      type: String,
+    },
+    status: {
+      type: String,
+    },
+  },
+  paidAt: {
+    type: Date,
+  },
+  itemsPrice: {
+    type: Number,
+    required: true,
+    default: 0.0,
+  },
+  taxPrice: {
+    type: Number,
+    required: true,
+    default: 0.0,
+  },
+  shippingPrice: {
+    type: Number,
+    required: true,
+    default: 0.0,
+  },
+  totalPrice: {
+    type: Number,
+    required: true,
+    default: 0.0,
+  },
+  orderStatus: {
+    type: String,
+    required: true,
+    default: 'Processing',
+  },
+  deliveredAt: {
+    type: Date,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 })
 
 module.exports = mongoose.model('Order', orderSchema)
