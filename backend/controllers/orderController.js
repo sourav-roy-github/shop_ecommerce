@@ -87,6 +87,7 @@ exports.updateOrder = catchAsyncErrors(async (req, res, next) => {
   }
 
   order.orderItems.forEach(async (item) => {
+    //console.log(product)
     await updateStock(item.product, item.quantity)
   })
   ;(order.orderStatus = req.body.status), (order.deliveredAt = Date.now())
@@ -100,6 +101,8 @@ exports.updateOrder = catchAsyncErrors(async (req, res, next) => {
 
 async function updateStock(id, quantity) {
   const product = await Product.findById(id)
+
+  //console.log(product)
 
   product.stock = product.stock - quantity
 
