@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import '../../App.css'
 
 const Header = () => {
   return (
@@ -6,7 +7,7 @@ const Header = () => {
       <nav className="navbar row">
         <div className="col-12 col-md-3">
           <div className="navbar-brand">
-            <img src="/images/logo_project.jpeg" />
+            <img src="/images/logo1.png" />
           </div>
         </div>
 
@@ -16,7 +17,7 @@ const Header = () => {
               type="text"
               id="search_field"
               className="form-control"
-              placeholder="Enter Product Name ..."
+              placeholder="Enter Product Name"
             />
             <div className="input-group-append">
               <button id="search_btn" className="btn">
