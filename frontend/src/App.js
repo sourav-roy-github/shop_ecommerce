@@ -12,6 +12,8 @@ import Profile from './components/user/Profile'
 import { loadUser } from './actions/userActions'
 import store from './store'
 
+import ProtectedRoute from './components/route/ProtectedRoute'
+
 function App() {
   useEffect(() => {
     store.dispatch(loadUser())
@@ -28,7 +30,14 @@ function App() {
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/me" element={<Profile />} />
+            <Route
+              path="/me"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
         </div>
         <Footer />

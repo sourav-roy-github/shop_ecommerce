@@ -4,6 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import {
   productsReducer,
   productDetailsReducer,
+  userReducers,
 } from './reducers/productReducers'
 import {
   authReducer,
@@ -17,6 +18,7 @@ const reducer = combineReducers({
   products: productsReducer,
   productDetails: productDetailsReducer,
   auth: authReducer,
+  user: userReducer,
 })
 
 let initialState = {}
