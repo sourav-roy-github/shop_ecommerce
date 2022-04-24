@@ -6,6 +6,7 @@ import MetaData from '../layout/MetaData'
 import { useAlert } from 'react-alert'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProductDetails, clearErrors } from '../../actions/productActions'
+import { addItemToCart } from '../../actions/cartActions'
 
 const ProductDetails = ({ match }) => {
   const [quantity, setQuantity] = useState(1)
@@ -26,6 +27,12 @@ const ProductDetails = ({ match }) => {
       dispatch(clearErrors())
     }
   }, [dispatch, alert, error, params.id])
+
+  //add to cart function
+  const addToCart = () => {
+    dispatch(addItemToCart(params.id, quantity))
+    alert.success('Item Added to Cart')
+  }
 
   //increase quantity to add to cart
   const increaseQty = () => {
@@ -107,6 +114,8 @@ const ProductDetails = ({ match }) => {
                 type="button"
                 id="cart_btn"
                 className="btn btn-primary d-inline ml-4"
+                disabled={product.stock === 0}
+                onClick={addToCart}
               >
                 Add to Cart
               </button>
