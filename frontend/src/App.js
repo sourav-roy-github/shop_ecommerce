@@ -64,6 +64,14 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            <Route
+              path="/shipping"
+              element={
+                <ProtectedRoute>
+                  <Shipping />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
         </div>
         <Footer />
