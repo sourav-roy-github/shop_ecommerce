@@ -21,6 +21,7 @@ import Payment from './components/cart/Payment'
 import OrderSuccess from './components/cart/OrderSuccess'
 
 import ListOrders from './components/order/ListOrders'
+import OrderDetails from './components/order/OrderDetails'
 
 import { loadUser } from './actions/userActions'
 import store from './store'
@@ -112,6 +113,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <ListOrders />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/order/:id"
+              element={
+                <ProtectedRoute>
+                  <OrderDetails />
                 </ProtectedRoute>
               }
             />
