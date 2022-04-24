@@ -20,6 +20,8 @@ import ConfirmOrder from './components/cart/ConfirmOrder'
 import Payment from './components/cart/Payment'
 import OrderSuccess from './components/cart/OrderSuccess'
 
+import ListOrders from './components/order/ListOrders'
+
 import { loadUser } from './actions/userActions'
 import store from './store'
 
@@ -102,6 +104,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <OrderSuccess />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/orders/me"
+              element={
+                <ProtectedRoute>
+                  <ListOrders />
                 </ProtectedRoute>
               }
             />
