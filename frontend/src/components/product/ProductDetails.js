@@ -296,9 +296,9 @@ const ProductDetails = ({ match }) => {
               </div>
             </div>
           </div>
-          {product.reviews && product.reviews.length > 0 && (
-            <p>Review Comment</p>
-          )}
+          {product.reviews &&
+            product.reviews.length > 0 &&
+            product.reviews.map((review) => <p>{review.comment}</p>)}
         </Fragment>
       )}
     </Fragment>
