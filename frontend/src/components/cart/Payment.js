@@ -39,7 +39,62 @@ const Payment = ({ history }) => {
 
   useEffect(() => {}, [])
 
-  const submitHandler = async (e) => {}
+  const orderInfo = JSON.parse(sessionStorage.getItem('orderInfo'))
+
+  const paymentData = {
+    amount: Math.round(orderInfo.totalPrice * 100),
+  }
+
+  const submitHandler = async (e) => {
+    e.preventDefault()
+
+    document.querySelector('#pay_btn').disabled = true
+
+    let res
+
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+
+      res = await axios.post('/api/v1/payment/process', paymentData, config)
+
+      const clientSecret = res.data.client_secret
+
+      console.log(clientSecret)
+
+      if (!stripe || !elements) {
+        return
+      }
+
+      const result = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: elements.getElement(CardNumberElement),
+          billing_details: {
+            name: user.name,
+            email: user.email,
+          },
+        },
+      })
+
+      if (result.error) {
+        alert.error(result.error.message)
+        document.querySelector('#pay_btn').disabled = false
+      } else {
+        if (result.paymentIntent.status === 'succeeded') {
+          //todo new order
+          navigate('/success')
+        } else {
+          alert.error('There is some issue while payment processing')
+        }
+      }
+    } catch (error) {
+      document.querySelector('#pay_btn').disabled = false
+      alert.error(error.response.data.message)
+    }
+  }
 
   return (
     <Fragment>
@@ -81,7 +136,7 @@ const Payment = ({ history }) => {
             </div>
 
             <button id="pay_btn" type="submit" class="btn btn-block py-3">
-              Pay
+              Pay {` : $${orderInfo && orderInfo.totalPrice}`}
             </button>
           </form>
         </div>
