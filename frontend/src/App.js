@@ -25,6 +25,7 @@ import OrderSuccess from './components/cart/OrderSuccess'
 
 //Imports - Admin
 import Dashboard from './components/admin/Dashboard'
+import ProductsList from './components/admin/ProductsList'
 
 //Imports - Order
 import ListOrders from './components/order/ListOrders'
@@ -153,6 +154,15 @@ function App() {
             element={
               <ProtectedRoute>
                 <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/products"
+            isAdmin={true}
+            element={
+              <ProtectedRoute>
+                <ProductsList />
               </ProtectedRoute>
             }
           />
