@@ -1,3 +1,4 @@
+//Imports - Essentials
 import { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import axios from 'axios'
@@ -32,8 +33,10 @@ import OrderDetails from './components/order/OrderDetails'
 import { loadUser } from './actions/userActions'
 import store from './store'
 
+//Protected Route
 import ProtectedRoute from './components/route/ProtectedRoute'
 
+//Imports - Payment - Stripe
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
 
