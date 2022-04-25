@@ -6,6 +6,7 @@ import Footer from './components/layout/Footer'
 import Home from './components/Home'
 import ProductDetails from './components/product/ProductDetails'
 
+//Auth Imports
 import Login from './components/user/Login'
 import Register from './components/user/Register'
 import Profile from './components/user/Profile'
@@ -14,12 +15,17 @@ import UpdatePassword from './components/user/UpdatePassword'
 import ForgotPassword from './components/user/ForgotPassword'
 import NewPassword from './components/user/NewPassword'
 
+//Imports - Cart
 import Cart from './components/cart/Cart'
 import Shipping from './components/cart/Shipping'
 import ConfirmOrder from './components/cart/ConfirmOrder'
 import Payment from './components/cart/Payment'
 import OrderSuccess from './components/cart/OrderSuccess'
 
+//Imports - Admin
+import Dashboard from './components/admin/Dashboard'
+
+//Imports - Order
 import ListOrders from './components/order/ListOrders'
 import OrderDetails from './components/order/OrderDetails'
 
@@ -124,6 +130,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
+
             {stripeApiKey && (
               <Route
                 path="/payment"
@@ -136,6 +143,17 @@ function App() {
             )}
           </Routes>
         </div>
+        <Routes>
+          <Route
+            path="/dashboard"
+            isAdmin={true}
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
         <Footer />
       </div>
     </Router>
