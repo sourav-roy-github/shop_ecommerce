@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { Carousel } from 'react-bootstrap'
 import Loader from '../layout/Loader'
 import MetaData from '../layout/MetaData'
+import ListReviews from '../review/ListReviews'
 import { useAlert } from 'react-alert'
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -296,9 +297,9 @@ const ProductDetails = ({ match }) => {
               </div>
             </div>
           </div>
-          {product.reviews &&
-            product.reviews.length > 0 &&
-            product.reviews.map((review) => <p>{review.comment}</p>)}
+          {product.reviews && product.reviews.length > 0 && (
+            <ListReviews reviews={product.reviews} />
+          )}
         </Fragment>
       )}
     </Fragment>
