@@ -10,6 +10,7 @@ const Dashboard = () => {
   const dispatch = useDispatch()
   const { products } = useSelector((state) => state.products)
 
+  //display the no of out of stock products
   let outOfStock = 0
   products.forEach((product) => {
     if (product.stock === 0) {
