@@ -27,6 +27,7 @@ import OrderSuccess from './components/cart/OrderSuccess'
 import Dashboard from './components/admin/Dashboard'
 import ProductsList from './components/admin/ProductsList'
 import NewProduct from './components/admin/NewProduct'
+import UpdateProduct from './components/admin/UpdateProduct'
 
 //Imports - Order
 import ListOrders from './components/order/ListOrders'
@@ -175,6 +176,15 @@ function App() {
             element={
               <ProtectedRoute>
                 <NewProduct />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/product/:id"
+            isAdmin={true}
+            element={
+              <ProtectedRoute>
+                <UpdateProduct />
               </ProtectedRoute>
             }
           />
