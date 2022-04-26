@@ -8,7 +8,7 @@ import Sidebar from './Sidebar'
 
 import { useAlert } from 'react-alert'
 import { useDispatch, useSelector } from 'react-redux'
-import { allUsers, clearErrors } from '../../actions/userActions'
+import { allUsers, deleteUser, clearErrors } from '../../actions/userActions'
 import { DELETE_USER_RESET } from '../../constants/userConstants'
 
 const UsersList = ({ history }) => {
@@ -84,7 +84,10 @@ const UsersList = ({ history }) => {
             >
               <i className="fa fa-pencil"></i>
             </Link>
-            <button className="btn btn-danger py-1 px-2 ml-2">
+            <button
+              className="btn btn-danger py-1 px-2 ml-2"
+              onClick={() => deleteUserHandler(user._id)}
+            >
               <i className="fa fa-trash"></i>
             </button>
           </Fragment>
