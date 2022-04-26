@@ -42,6 +42,7 @@ const reducer = combineReducers({
   allOrders: allOrdersReducer,
   order: orderReducer,
   allUsers: allUsersReducer,
+  userDetails: userDetailsReducer,
 })
 
 let initialState = {
