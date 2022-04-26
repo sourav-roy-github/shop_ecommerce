@@ -34,6 +34,7 @@ import OrderDetails from './components/order/OrderDetails'
 
 import { loadUser } from './actions/userActions'
 import store from './store'
+import { useSelector } from 'react-redux'
 
 //Protected Route
 import ProtectedRoute from './components/route/ProtectedRoute'
@@ -56,6 +57,7 @@ function App() {
 
     getStripApiKey()
   }, [])
+  const { user, isAuthenticated, loading } = useSelector((state) => state.auth)
 
   return (
     <Router>
@@ -177,7 +179,7 @@ function App() {
             }
           />
         </Routes>
-        <Footer />
+        {!loading && (!isAuthenticated || user.role !== 'admin') && <Footer />}
       </div>
     </Router>
   )
