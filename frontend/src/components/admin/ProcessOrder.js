@@ -14,13 +14,15 @@ import {
 } from '../../actions/orderActions'
 import { UPDATE_ORDER_RESET } from '../../constants/orderConstants'
 
-const ProcessOrder = () => {
+const ProcessOrder = ({ match }) => {
   const [status, setStatus] = useState('')
 
   const alert = useAlert()
   const dispatch = useDispatch()
   const params = useParams()
+  const { error, isUpdated } = useSelector((state) => state.order)
 
+  const orderId = params.id
   const { loading, order = {} } = useSelector((state) => state.orderDetails)
   const {
     shippingInfo,
@@ -30,9 +32,6 @@ const ProcessOrder = () => {
     totalPrice,
     orderStatus,
   } = order
-  const { error, isUpdated } = useSelector((state) => state.order)
-
-  const orderId = params.id
 
   useEffect(() => {
     dispatch(getOrderDetails(orderId))
