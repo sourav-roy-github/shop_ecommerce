@@ -41,6 +41,7 @@ const reducer = combineReducers({
   product: productReducer,
   allOrders: allOrdersReducer,
   order: orderReducer,
+  allUsers: allUsersReducer,
 })
 
 let initialState = {
