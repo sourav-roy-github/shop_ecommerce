@@ -35,6 +35,7 @@ const NewProduct = ({ history }) => {
 
   const alert = useAlert()
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const { loading, error, success } = useSelector((state) => state.newProduct)
 
