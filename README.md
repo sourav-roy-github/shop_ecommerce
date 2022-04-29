@@ -1,12 +1,10 @@
 # Artilugio
 
-> Complete E-commerce site built with Node.js, React, Redux, Express, MongoDB
+> E-commerce site built with MERN stack
 
-More about this project and course on Udemy. Course Name: [MERN Stack Full Ecommerce Site - Using React, Redux, Node.j](https://www.udemy.com/course/3678044)
+### Environment Variables
 
-### Env Variables
-
-Add your config variables values in the config.env file in backend/config folder as shown in the course.
+Add your config variables in the config.env file in backend/config folder.
 
 ### Install Dependencies (Frontend)
 
