@@ -10,6 +10,7 @@ const Search = ({ history }) => {
 
     if (keyword.trim()) {
       navigate(`/search/${keyword}`)
+      console.log(keyword)
     } else {
       navigate('/')
     }

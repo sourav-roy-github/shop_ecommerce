@@ -6,6 +6,7 @@ const catchAsyncErrors = require('../middlewares/catchAsyncErrors')
 
 const APIFeatures = require('../utils/apiFeatures')
 
+//to store the data- external
 const cloudinary = require('cloudinary')
 
 //CREATE NEW PRODUCT

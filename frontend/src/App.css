@@ -11,12 +11,12 @@ body {
 /* Scroll Bar */
 
 ::-webkit-scrollbar-track {
-  background-color: #f5f5f5;
+  background-color: #fff;
 }
 
 ::-webkit-scrollbar {
   width: 8px;
-  background-color: #f5f5f5;
+  background-color: #ffffff;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -33,7 +33,7 @@ nav {
 }
 
 #search_btn {
-  background-color: #febd69;
+  background-color: #fa9c23;
 }
 
 .input-group {
@@ -48,7 +48,7 @@ nav {
 
 #login_btn,
 #view_btn {
-  background-color: #febd69;
+  background-color: #fa9c23;
   padding: 0.4rem 1.8rem;
   font-family: calibri;
 }
@@ -59,7 +59,7 @@ nav {
 }
 
 #cart_count {
-  background-color: #febd69;
+  background-color: #fa9c23;
   padding: 0.2rem 0.5rem;
   border-radius: 0.2rem;
   color: black;

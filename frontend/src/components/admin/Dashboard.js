@@ -45,7 +45,10 @@ const Dashboard = () => {
               <MetaData title={'Admin Dashboard'} />
               <div className="row pr-4">
                 <div className="col-xl-12 col-sm-12 mb-3">
-                  <div className="card text-white bg-primary o-hidden h-100">
+                  <div
+                    className="card text-white bg-primary
+                   o-hidden h-100"
+                  >
                     <div className="card-body">
                       <div className="text-center card-font-size">
                         Total Amount

@@ -65,6 +65,7 @@ const Home = ({ match }) => {
   let count = productsCount
   if (keyword) {
     count = filteredProductsCount
+    console.log(count)
   }
 
   return (

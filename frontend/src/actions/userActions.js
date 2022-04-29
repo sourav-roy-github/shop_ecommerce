@@ -41,6 +41,7 @@ import {
   DELETE_USER_FAIL,
   CLEAR_ERRORS,
 } from '../constants/userConstants'
+//import { CART_RESET } from '../constants/cartConstants'
 
 // Login
 export const login = (email, password) => async (dispatch) => {
@@ -230,6 +231,7 @@ export const logout = () => async (dispatch) => {
 
     dispatch({
       type: LOGOUT_SUCCESS,
+      //type: CART_RESET,
     })
   } catch (error) {
     dispatch({
