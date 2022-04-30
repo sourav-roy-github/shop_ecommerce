@@ -71,6 +71,7 @@ function App() {
         <Header />
         <div className="container container-fluid">
           <Routes>
+            <Route path="/land" element={<Land />} />
             <Route path="/" element={<Home />} />
             <Route path="/search/:keyword" element={<Home />} />
             <Route path="/product/:id" element={<ProductDetails />} />

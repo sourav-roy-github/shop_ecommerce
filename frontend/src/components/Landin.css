@@ -1,0 +1,164 @@
+.bt {
+  position: fixed;
+  left: 50%;
+  top: 90%;
+}
+.carousel-inner {
+  position: relative;
+  max-height: 200%;
+}
+
+.carousel {
+  position: relative;
+  width: 105%;
+  right: 3%;
+  max-height: 200%;
+}
+.deal {
+  align-items: center;
+  width: 80%;
+}
+
+.maindeal {
+  width: 125%;
+  height: 30%;
+  right: 0%;
+  left: 10%;
+}
+
+#the-final-countdown {
+  text-align: left;
+  color: white;
+  text-shadow: 1px 1px 5px #232f3e;
+  font-size: 2rem;
+}
+.main {
+  position: absolute;
+  right: 0%;
+  left: 0%;
+}
+
+.one {
+  background: url(https://static.vecteezy.com/system/resources/previews/003/638/989/original/light-gold-glitter-confetti-background-golden-stars-vector.jpg)
+    center/cover no-repeat fixed;
+  position: relative;
+  left: 1%;
+  width: 98%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.two {
+  background: url(https://img.myloview.com/posters/abstract-gradient-light-blue-turquoise-yellow-shiny-blurred-background-texture-with-circular-bokeh-lights-beautiful-backdrop-space-for-design-400-216051113.jpg)
+    center/cover no-repeat fixed;
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  align-items: center;
+  text-align: center;
+}
+
+.three {
+  background: url(https://t4.ftcdn.net/jpg/01/79/68/43/360_F_179684301_4CTmSNgdeX0blIihbod77dbIwqgOFwV9.jpg)
+    center/cover no-repeat fixed;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.timetag {
+  text-align: center;
+  vertical-align: center;
+  background: rgb(37, 189, 191);
+  background: linear-gradient(
+    0deg,
+    rgba(37, 189, 191, 1) 0%,
+    rgba(0, 0, 0, 0.8718837876947654) 97%
+  );
+}
+.dealtag2 {
+  text-align: center;
+  vertical-align: center;
+  background-color: #a0e291;
+  padding-top: 1%;
+  height: 2cm;
+  background: rgb(37, 189, 191);
+  background: linear-gradient(
+    0deg,
+    rgba(37, 189, 191, 1) 0%,
+    rgba(0, 0, 0, 0.8718837876947654) 97%
+  );
+  color: white;
+}
+.heading {
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+  height: 50px;
+  left: 2%;
+}
+.time {
+  position: relative;
+  display: inline-block;
+  width: 160px;
+  height: 20px;
+  left: 2%;
+}
+.canimage {
+  position: relative;
+  top: 5%;
+  padding: 2%;
+  width: 40%;
+  height: 90%;
+}
+.dealtag3 {
+  text-align: center;
+  vertical-align: center;
+  background-color: #50534f;
+  padding-top: 1%;
+  height: 2cm;
+  color: white;
+  background: rgb(37, 189, 191);
+  background: linear-gradient(
+    0deg,
+    rgba(37, 189, 191, 1) 0%,
+    rgba(0, 0, 0, 0.8718837876947654) 97%
+  );
+}
+
+.vidwrap {
+  background-color: #dcdcdc;
+  position: relative;
+
+  padding: 10px;
+  text-align: center;
+}
+.v1 {
+  position: relative;
+  padding-right: 0.4%;
+}
+.v2 {
+  position: relative;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 365px) {
+  .v1 {
+    float: none;
+    width: fit-content;
+  }
+  .v2 {
+    position: relative;
+  }
+}
+
+.contain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #232f3e;
+}
