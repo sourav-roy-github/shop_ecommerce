@@ -125,7 +125,7 @@ function App() {
               path="/success"
               element={
                 <ProtectedRoute>
-                  <OrderSuccess />
+                  <OrderSuccess userid={user} />
                 </ProtectedRoute>
               }
             />
