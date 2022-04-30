@@ -70,6 +70,7 @@ const Home = ({ match }) => {
     console.log(count)
   }
 
+  //console.log(user)
   if (user != null) {
     dispatch(createCart(user._id))
   }
