@@ -85,14 +85,6 @@ export const getAllCart = (userid) => async (dispatch, getState) => {
 export const createCart = (userid) => async (dispatch) => {
   try {
     const cartData = await axios.get(`/api/v1/cart/${userid}`)
-    if (cartData.data.cart.length === 0) {
-      await axios.post(
-        '/api/v1/cart/new',
-        { user: userid, cartItems: [], totalPrice: 0.0, totalQuantity: 0.0 },
-        config,
-      )
-    }
-
     dispatch({
       type: CREATE_CART_SUCCESS,
       payload: cartData.data.cart,

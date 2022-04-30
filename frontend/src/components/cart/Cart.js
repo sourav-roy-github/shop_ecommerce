@@ -35,7 +35,9 @@ const Cart = ({ history }) => {
   }
 
   useEffect(() => {
-    dispatch(createCart(user._id))
+    if (user != null) {
+      dispatch(createCart(user._id))
+    }
   })
 
   const { cartItems, totalPrice, totalQuantity } = useSelector(

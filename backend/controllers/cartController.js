@@ -28,8 +28,16 @@ exports.newCart = catchAsyncErrors(async (req, res, next) => {
 
 //GET ALL CARTITEMS
 exports.getCartItems = catchAsyncErrors(async (req, res, next) => {
-  const resPerPage = 4
   const cart = await Cart.find({ user: req.params.id })
+  if (cart.length === 0) {
+    await Cart.create({
+      cartItems: [],
+      totalPrice: 0,
+      totalQuantity: 0,
+      createdAt: Date.now(),
+      user: req.params.id,
+    })
+  }
   res.status(200).json({
     success: true,
     cart,
