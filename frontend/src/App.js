@@ -6,6 +6,7 @@ import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 import Home from './components/Home'
 import ProductDetails from './components/product/ProductDetails'
+import Land from './components/Landing'
 
 //Auth Imports
 import Login from './components/user/Login'
