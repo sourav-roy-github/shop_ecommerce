@@ -5,16 +5,19 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useAlert } from 'react-alert'
 import { logout } from '../../actions/userActions'
+import { clearCart } from '../../actions/cartActions'
 
 const Header = () => {
   const alert = useAlert()
   const dispatch = useDispatch()
 
   const { user, loading } = useSelector((state) => state.auth)
-  const { cartItems } = useSelector((state) => state.cart)
+  const { totalQuantity } = useSelector((state) => state.cart)
 
   const logoutHandler = () => {
+    dispatch(clearCart())
     dispatch(logout())
+    window.location.reload()
     alert.success('Logged out successfully.')
   }
 
@@ -39,7 +42,7 @@ const Header = () => {
               Cart
             </span>
             <span className="ml-1" id="cart_count">
-              {cartItems.length}
+              {totalQuantity === undefined ? 0 : totalQuantity}
             </span>
           </Link>
 

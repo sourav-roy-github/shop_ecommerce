@@ -52,7 +52,7 @@ const ProductDetails = ({ match }) => {
 
   //add to cart function
   const addToCart = () => {
-    dispatch(addItemToCart(params.id, quantity))
+    dispatch(addItemToCart(params.id, quantity, user._id))
     alert.success('Item Added to Cart')
   }
 

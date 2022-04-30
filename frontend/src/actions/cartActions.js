@@ -3,33 +3,54 @@ import {
   ADD_TO_CART,
   REMOVE_ITEM_CART,
   SAVE_SHIPPING_INFO,
+  GET_ALL_CART_REQUEST,
+  GET_ALL_CART_SUCCESS,
+  GET_ALL_CART_FAIL,
+  CREATE_CART_FAIL,
+  CREATE_CART_SUCCESS,
+  DELETE_CART,
+  CLEAR_CART,
 } from '../constants/cartConstants'
 
-export const addItemToCart = (id, quantity) => async (dispatch, getState) => {
-  const { data } = await axios.get(`/api/v1/products/${id}`)
+const config = {
+  headers: {
+    'Content-Type': 'application/json',
+  },
+}
+
+export const addItemToCart = (id, quantity, userid) => async (dispatch) => {
+  dispatch(createCart(userid))
+
+  const cartRes = await axios.post(
+    '/api/v1/cart/addItem',
+    {
+      user: userid,
+      product_id: id,
+      quantity: quantity,
+    },
+    config,
+  )
 
   dispatch({
     type: ADD_TO_CART,
-    payload: {
-      product: data.product._id,
-      name: data.product.name,
-      price: data.product.price,
-      image: data.product.images[0].url,
-      stock: data.product.stock,
-      quantity,
-    },
+    payload: cartRes.data.cart,
   })
-  localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems))
 }
 
 //remove item from cart
-export const removeItemFromCart = (id) => async (dispatch, getState) => {
+export const removeItemFromCart = (productID, userID) => async (dispatch) => {
+  await axios.post(
+    '/api/v1/cart/deleteItem',
+    {
+      userID: userID,
+      productID: productID,
+    },
+    config,
+  )
   dispatch({
     type: REMOVE_ITEM_CART,
-    payload: id,
+    payload: productID,
   })
-
-  localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems))
 }
 
 //shipping info
@@ -40,4 +61,61 @@ export const saveShippingInfo = (data) => async (dispatch) => {
   })
 
   localStorage.setItem('shippingInfo', JSON.stringify(data))
+}
+
+export const getAllCart = (userid) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: GET_ALL_CART_REQUEST,
+    })
+    const cartData = await axios.get(`/api/v1/cart/${userid}`)
+
+    dispatch({
+      type: GET_ALL_CART_SUCCESS,
+      payload: cartData.data.cart,
+    })
+  } catch (error) {
+    dispatch({
+      type: GET_ALL_CART_FAIL,
+      payload: error.response.data.message,
+    })
+  }
+}
+
+export const createCart = (userid) => async (dispatch) => {
+  try {
+    const cartData = await axios.get(`/api/v1/cart/${userid}`)
+    if (cartData.data.cart.length === 0) {
+      await axios.post(
+        '/api/v1/cart/new',
+        { user: userid, cartItems: [], totalPrice: 0.0, totalQuantity: 0.0 },
+        config,
+      )
+    }
+
+    dispatch({
+      type: CREATE_CART_SUCCESS,
+      payload: cartData.data.cart,
+    })
+  } catch (error) {
+    dispatch({
+      type: CREATE_CART_FAIL,
+      payload: error.response.data.message,
+    })
+  }
+}
+
+export const deleteCart = (userid) => async (dispatch) => {
+  const cartData = await axios.get(`/api/v1/cart/delete/${userid}`)
+  dispatch({
+    type: DELETE_CART,
+    payload: cartData.success,
+  })
+}
+
+export const clearCart = () => async (dispatch) => {
+  dispatch({
+    type: CLEAR_CART,
+    payload: [],
+  })
 }

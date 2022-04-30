@@ -1,40 +1,46 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-
 import MetaData from '../layout/MetaData'
-
-import { useAlert } from 'react-alert'
 import { useDispatch, useSelector } from 'react-redux'
-import { addItemToCart, removeItemFromCart } from '../../actions/cartActions'
+import {
+  addItemToCart,
+  removeItemFromCart,
+  createCart,
+} from '../../actions/cartActions'
 
 const Cart = ({ history }) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const { cartItems } = useSelector((state) => state.cart)
+  const { user } = useSelector((state) => state.auth)
 
   const removeCartItemHandler = (id) => {
-    dispatch(removeItemFromCart(id))
+    dispatch(removeItemFromCart(id, user._id))
   }
 
   const increaseQty = (id, quantity, stock) => {
     const newQty = quantity + 1
-
     if (newQty > stock) return
-
-    dispatch(addItemToCart(id, newQty))
+    dispatch(addItemToCart(id, 1, user._id))
   }
 
   const decreaseQty = (id, quantity) => {
     const newQty = quantity - 1
-
     if (newQty <= 0) return
-
-    dispatch(addItemToCart(id, newQty))
+    dispatch(addItemToCart(id, -1, user._id))
   }
+
   const checkoutHandler = () => {
     navigate('/login?redirect=shipping')
   }
+
+  useEffect(() => {
+    dispatch(createCart(user._id))
+  })
+
+  const { cartItems, totalPrice, totalQuantity } = useSelector(
+    (state) => state.cart,
+  )
 
   return (
     <Fragment>
@@ -49,10 +55,10 @@ const Cart = ({ history }) => {
 
           <div className="row d-flex justify-content-between">
             <div className="col-12 col-lg-8">
-              {cartItems.map((item) => (
-                <Fragment>
+              {cartItems.map((item, index) => (
+                <Fragment key={index}>
                   <hr />
-                  <div className="cart-item" key={item.product}>
+                  <div className="cart-item">
                     <div className="row">
                       <div className="col-4 col-lg-3">
                         <img
@@ -124,24 +130,14 @@ const Cart = ({ history }) => {
                 <p>
                   Subtotal:{' '}
                   <span className="order-summary-values">
-                    {cartItems.reduce(
-                      (acc, item) => acc + Number(item.quantity),
-                      0,
-                    )}
+                    {totalQuantity}
+                    {'  '}
                     (Units)
                   </span>
                 </p>
                 <p>
                   Est. total:{' '}
-                  <span className="order-summary-values">
-                    $
-                    {cartItems
-                      .reduce(
-                        (acc, item) => acc + item.quantity * item.price,
-                        0,
-                      )
-                      .toFixed(2)}
-                  </span>
+                  <span className="order-summary-values">${totalPrice}</span>
                 </p>
 
                 <hr />

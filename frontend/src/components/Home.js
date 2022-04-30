@@ -10,6 +10,7 @@ import { getProducts } from '../actions/productActions'
 import Loader from './layout/Loader'
 import { useAlert } from 'react-alert'
 import { useParams } from 'react-router-dom'
+import { createCart } from '../actions/cartActions'
 
 const { createSliderWithTooltip } = Slider
 const Range = createSliderWithTooltip(Slider.Range)
@@ -19,6 +20,7 @@ const Home = ({ match }) => {
   const [price, setPrice] = useState([1, 1000])
   const [category, setCategory] = useState('')
   const [rating, setRating] = useState(0)
+  const { user } = useSelector((state) => state.auth)
 
   const categories = [
     'Electronics',
@@ -68,6 +70,9 @@ const Home = ({ match }) => {
     console.log(count)
   }
 
+  if (user != null) {
+    dispatch(createCart(user._id))
+  }
   return (
     <Fragment>
       {loading ? (

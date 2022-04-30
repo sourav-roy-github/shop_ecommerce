@@ -1,8 +1,14 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import MetaData from '../layout/MetaData'
+import { deleteCart } from '../../actions/cartActions'
+import { useDispatch } from 'react-redux'
 
-const OrderSuccess = () => {
+const OrderSuccess = ({ userid }) => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(deleteCart(userid._id))
+  })
   return (
     <Fragment>
       <MetaData title={'Order Success'} />
